@@ -34,7 +34,7 @@
     wlogout.enable = true;
     helixModule.enable = true;
     ghostty.enable = true;
-    kitty.enable = true;
+    kitty.enable = false;
     gitModule = {
       enable = true;
       # userName = "TSawyer87";
