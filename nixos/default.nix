@@ -17,5 +17,7 @@
     ./zram.nix
     ./utils.nix
     ./xdg.nix
+    ./services.nix
+    ./i18n.nix
   ];
 }
