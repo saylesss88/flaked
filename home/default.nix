@@ -5,7 +5,7 @@
     ./terms/kitty.nix
     ./shells
     ./helix
-    ./yazi.nix
+    # ./yazi.nix
     ./git.nix
     ./nh.nix
     ./gtk.nix

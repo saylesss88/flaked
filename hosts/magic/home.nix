@@ -55,8 +55,23 @@
     };
     nvfModule.enable = true;
     batModule.enable = true;
-    yaziModule.enable = true;
+    # yaziModule.enable = true;
     # discord.enable = true;
+  };
+
+  programs.yazi = {
+    enable = true;
+    settings = {
+      log = {
+        enabled = false;
+      };
+      mgr = {
+        show_hidden = false;
+        sort_by = "mtime";
+        sort_dir_first = true;
+        sort_reverse = true;
+      };
+    };
   };
 
   # dont-track-me = {
