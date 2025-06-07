@@ -1,7 +1,8 @@
 {...}: {
   imports = [
     ./hypr
-    ./terms
+    ./terms/switchboard.nix
+    ../options/custom-options.nix
     ./shells
     ./helix
     ./yazi.nix
