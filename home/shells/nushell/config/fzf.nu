@@ -29,7 +29,7 @@ const fzf_prompt_info = {
   Internals: {bg: '#0dcf6f' symbol: ''}
   Externals: {bg: '#7aa2f7' symbol: ''}
 }
-use ~/flake/home/shells/nushell/config/lib.nu [
+use ~/flaked/home/shells/nushell/config/lib.nu [
   substring_from_idx
   substring_to_idx
 ]
