@@ -91,7 +91,7 @@
 
           # Miscellaneous
           c = "clear";
-          yz = "${pkgs.yazi}/bin/yazi";
+          y = "${pkgs.yazi}/bin/yazi";
           la = "ls -la";
           ll = "ls -l";
           n = "${pkgs.nitch}/bin/nitch";

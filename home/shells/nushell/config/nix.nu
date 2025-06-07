@@ -10,7 +10,7 @@ def nix-list-system []: nothing -> list<string> {
 # upgrade system packages
 # `nix-upgrade` or `nix-upgrade -i`
 def nix-upgrade [
-  flake_path: string = "/home/jr/flake", # path that contains a flake.nix
+  flake_path: string = "/home/jr/flaked", # path that contains a flake.nix
   --interactive (-i) # select packages to upgrade interactively
 ]: nothing -> nothing {
   let working_path = $flake_path | path expand
