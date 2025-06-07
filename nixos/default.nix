@@ -16,5 +16,6 @@
     ./pipewire.nix
     ./zram.nix
     ./utils.nix
+    ./xdg.nix
   ];
 }
