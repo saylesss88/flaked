@@ -6,6 +6,13 @@
 }: let
   cfg = config.custom.ghostty;
 in {
+  options.custom.ghostty = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the Ghostty Module";
+    };
+  };
   config = lib.mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
