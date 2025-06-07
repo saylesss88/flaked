@@ -37,7 +37,7 @@
       term = "ghostty";
       keys = "us";
       browser = "firefox";
-      flake = builtins.getEnv "HOME" + "/flake";
+      flake = builtins.getEnv "HOME" + "/flaked";
     };
 
     inputs =
