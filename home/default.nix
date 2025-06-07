@@ -3,6 +3,7 @@
     ./hypr
     ./terms/switchboard.nix
     ../options/custom-options.nix
+    ./terms/kitty.nix
     ./shells
     ./helix
     ./yazi.nix
