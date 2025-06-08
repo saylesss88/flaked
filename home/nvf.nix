@@ -31,6 +31,46 @@
           telescope.enable = true;
           autocomplete.nvim-cmp.enable = true;
 
+          autocomplete.nvim-cmp.config = lib.generators.mkLuaInline ''
+            local cmp = require('cmp')
+            local luasnip = require('luasnip')
+
+            cmp.setup({
+              mapping = cmp.mapping.preset.insert({
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-e>'] = cmp.mapping.abort(),
+                # THIS IS THE KEY CHANGE: Map <C-y> to accept
+                ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Keep Enter for explicit confirmation if desired, or remove
+                -- Alternatively, to completely disable Enter for completion:
+                -- ['<CR>'] = cmp.mapping.noop(),
+                ['<Tab>'] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  -- You might also want to add tab-completion for snippets if using luasnip
+                  -- elseif luasnip.expand_or_jumpable() then
+                  --   luasnip.expand_or_jump()
+                  else
+                    fallback()
+                  end
+                end, { 'i', 's' }),
+                ['<S-Tab>'] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_prev_item()
+                  -- elseif luasnip.jumpable(-1) then
+                  --   luasnip.jump(-1)
+                  else
+                    fallback()
+                  end
+                end, { 'i', 's' }),
+              }),
+              # Other nvim-cmp settings can go here if needed
+              # For example, sources, formatting, etc.
+            })
+          '';
+
           mini = {
             starter = {
               enable = true;
