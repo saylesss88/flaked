@@ -154,6 +154,7 @@
             "marksman"
             "gpt"
             "codeium"
+            "ltex-ls"
           ];
           formatter = {
             command = "prettier";
@@ -163,6 +164,7 @@
             ];
           };
           auto-format = true;
+          spell-check = true;
         }
         {
           name = "nix";

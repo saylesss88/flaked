@@ -19,7 +19,6 @@ in {
         htop
         vivid
         nickel
-        jdk
         wasistlos
         obsidian
         nufmt
