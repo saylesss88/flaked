@@ -13,5 +13,6 @@
     ./fd.nix
     ./nvf.nix
     ./bat.nix
+    ./direnv.nix
   ];
 }
