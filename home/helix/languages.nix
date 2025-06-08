@@ -164,7 +164,6 @@
             ];
           };
           auto-format = true;
-          spell-check = true;
         }
         {
           name = "nix";
