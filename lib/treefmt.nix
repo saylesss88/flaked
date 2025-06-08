@@ -1,4 +1,8 @@
-{
+╭───┬────────────╮
+│ 0 │ x1b[?1049h │
+│ 1 │ >          │
+│ 2 │ /dev/tty   │
+╰───┴────────────╯{
   projectRootFile = "flake.nix";
   programs = {
     alejandra.enable = true;

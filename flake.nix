@@ -65,10 +65,13 @@
     # Formatter configuration
     treefmtEval = treefmt-nix.lib.evalModule pkgs ./lib/treefmt.nix;
   in {
-    formatter.${system} = treefmtEval.config.build.wrapper;
+    formatter = treefmtEval.config.build.wrapper; # This will become formatter.x86_64-linux, formatter.aarch64-darwin, etc.
 
-    # Style check for CI
-    checks.${system}.style = treefmtEval.config.build.check self;
+    checks.style = treefmtEval.config.build.check self;
+    # formatter.${system} = treefmtEval.config.build.wrapper;
+
+    # # Style check for CI
+    # checks.${system}.style = treefmtEval.config.build.check self;
 
     # Development shell
     devShells.${system}.default = import ./lib/dev-shell.nix {
