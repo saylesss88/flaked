@@ -18,6 +18,9 @@
 
   custom = {
     magic.enable = true; # bundle of nixos modules
+    magic.timezone = "America/New_York";
+    magic.hostname = "magic";
+    magic.locale = "en_US.UTF-8";
     bootModule.enable = true;
     users.enable = true;
     nixModule.enable = true;
