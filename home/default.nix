@@ -3,24 +3,22 @@
   config,
   ...
 }: {
-  imports = builtins.concatLists [
-    (lib.optional config.custom.magic.hm.enable [
-      ./hypr
-      ./terms
-      ./shells
-      ./helix
-      # ./yazi.nix
-      ./git.nix
-      ./nh.nix
-      ./gtk.nix
-      ./packages.nix
-      ./fd.nix
-      ./nvf.nix
-      ./bat.nix
-      ./direnv.nix
-      ./editorconfig.nix
-      ./emoji.nix
-    ])
+  imports = lib.optional config.custom.magic.hm.enable [
+    ./hypr
+    ./terms
+    ./shells
+    ./helix
+    # ./yazi.nix
+    ./git.nix
+    ./nh.nix
+    ./gtk.nix
+    ./packages.nix
+    ./fd.nix
+    ./nvf.nix
+    ./bat.nix
+    ./direnv.nix
+    ./editorconfig.nix
+    ./emoji.nix
   ];
 
   options.custom.magic.hm = {
