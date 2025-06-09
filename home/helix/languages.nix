@@ -161,7 +161,7 @@
         {
           name = "markdown";
           text-width = 80;
-          wrap-at-text-width = true;
+          soft-wrap.wrap-at-text-width = true;
           language-servers = [
             "marksman"
             "markdown-oxide"
