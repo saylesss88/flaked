@@ -14,5 +14,6 @@
     ./nvf.nix
     ./bat.nix
     ./direnv.nix
+    ./editorconfig.nix
   ];
 }
