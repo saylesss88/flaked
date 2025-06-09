@@ -27,7 +27,7 @@ in {
     ./i18n.nix
   ];
 
-  options.magic = {
+  options.custom.magic = {
     enable = lib.mkEnableOption "Enable magic modules globally";
 
     hostname = lib.mkOption {
