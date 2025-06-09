@@ -67,7 +67,6 @@ in {
             # max-indent-retain = 14;
             # wrap-at-text-width = true;
           };
-          prose-wrap.enable = true;
 
           auto-save = {
             focus-lost = true;
