@@ -29,10 +29,10 @@ in {
       };
       registry = {
         # self = this flake
-        self.flake = inputs.self;
+        # self.flake = inputs.self;
         # registers your nixpkgs flake input to `nixpkgs`
         # nix search nixpkgs#hello
-        nixpkgs.flake = inputs.nixpkgs;
+        # nixpkgs.flake = inputs.nixpkgs;
       };
       # gc = {
       #   automatic = true;
