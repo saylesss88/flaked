@@ -17,6 +17,7 @@
   networking.hostName = "magic"; # Define your hostname.
 
   custom = {
+    magic.enable = true; # bundle of nixos modules
     bootModule.enable = true;
     users.enable = true;
     nixModule.enable = true;
