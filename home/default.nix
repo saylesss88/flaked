@@ -22,7 +22,7 @@
   };
 
   config = {
-    custom.magic.home-manager.enable = lib.mkDefault false;
+    custom.magic.hm.enable = lib.mkDefault false;
     home.stateVersion = "25.05";
   };
 }
