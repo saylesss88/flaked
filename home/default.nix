@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  imports = lib.optional config.custom.magic.hm.enable [
+  imports = [
     ./hypr
     ./terms
     ./shells
@@ -23,9 +23,10 @@
 
   options.custom.magic.hm = {
     enable = lib.mkEnableOption "Enable Custom Home-Manager Modules Globally";
-    config = {
-      custom.magic.home-manager.enable = lib.mkDefault false;
-      home.stateVersion = "25.05";
-    };
+  };
+
+  config = {
+    custom.magic.home-manager.enable = lib.mkDefault false;
+    home.stateVersion = "25.05";
   };
 }
