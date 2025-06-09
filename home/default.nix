@@ -1,8 +1,7 @@
 {...}: {
   imports = [
     ./hypr
-    ./terms/ghostty.nix
-    ./terms/kitty.nix
+    ./terms
     ./shells
     ./helix
     # ./yazi.nix
