@@ -64,7 +64,11 @@ in {
           soft-wrap = {
             enable = false;
             # max-wrap = 10;
-            # max-indent-retain = 14;
+╭───┬────────────╮
+│ 0 │ x1b[?1049h │
+│ 1 │ >          │
+│ 2 │ /dev/tty   │
+╰───┴────────────╯            # max-indent-retain = 14;
             # wrap-at-text-width = true;
           };
 

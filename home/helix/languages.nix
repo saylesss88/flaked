@@ -70,6 +70,11 @@
         args = ["--stdio"];
       };
 
+      language-server.harper-ls.config.harper-ls = {
+        diagnosticSeverity = "warning";
+        linters.spaces = false;
+      };
+
       language = [
         {
           name = "css";
@@ -155,6 +160,7 @@
         }
         {
           name = "markdown";
+          text-width = 80;
           language-servers = [
             "marksman"
             "markdown-oxide"
@@ -166,8 +172,12 @@
           formatter = {
             command = "prettier";
             args = [
-              "--stdin-filepath"
-              "file.md"
+              "--parser"
+              "markdown"
+              "--prose-wrap"
+              "always"
+              # "--stdin-filepath"
+              # "file.md"
             ];
           };
           auto-format = true;
