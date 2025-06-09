@@ -35,9 +35,10 @@ in {
         scooter
         simple-completion-language-server
         topiary
-        ltex-ls
+        # ltex-ls
         hunspell
         hunspellDicts.en_US
+        harper
       ];
       settings = {
         # theme = "rose_pine";

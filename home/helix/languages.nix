@@ -65,6 +65,11 @@
         kubernetes = "k8s/*.yaml";
       };
 
+      language-server.harper-ls = {
+        command = "harper-ls";
+        args = ["--stdio"];
+      };
+
       language = [
         {
           name = "css";
@@ -152,9 +157,11 @@
           name = "markdown";
           language-servers = [
             "marksman"
+            "markdown-oxide"
             "gpt"
             "codeium"
-            "ltex-ls"
+            "harper-ls"
+            # "ltex-ls"
           ];
           formatter = {
             command = "prettier";
