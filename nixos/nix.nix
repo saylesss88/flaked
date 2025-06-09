@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     nix = {
-      channel.enable = false;
+      # channel.enable = false;
       settings = {
         auto-optimise-store = true;
         experimental-features = [
