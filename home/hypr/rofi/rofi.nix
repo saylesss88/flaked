@@ -13,11 +13,7 @@
         icon-theme = "Papirus";
         location = 0;
         font = "JetBrainsMono Nerd Font Mono 12";
-╭───┬────────────╮
-│ 0 │ x1b[?1049h │
-│ 1 │ >          │
-│ 2 │ /dev/tty   │
-╰───┴────────────╯        drun-display-format = "{icon} {name}";
+        drun-display-format = "{icon} {name}";
         display-drun = " Apps";
         display-run = " Run";
         display-filebrowser = " File";
