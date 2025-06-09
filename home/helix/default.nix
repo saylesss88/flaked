@@ -131,6 +131,9 @@ in {
             space = {
               "." = ":fmt";
             };
+            space.t = {
+              s = ":toggle soft-wrap.enable";
+            };
             C-g = [
               ":write-all"
               ":new"
