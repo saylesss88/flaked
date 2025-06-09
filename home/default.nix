@@ -15,5 +15,6 @@
     ./bat.nix
     ./direnv.nix
     ./editorconfig.nix
+    ./emoji.nix
   ];
 }
