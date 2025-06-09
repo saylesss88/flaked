@@ -30,6 +30,7 @@
 
   # Custom home-manager modules
   custom = {
+    magic.hm.enable = true;
     hyprland.enable = true;
     wlogout.enable = true;
     helixModule.enable = true;
