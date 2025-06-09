@@ -20,17 +20,30 @@
       };
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
+        # Define your own color palette here!
+        # You can use any hex color codes you prefer.
+        # These are just example dark theme colors.
+        myBg = "#282A36"; # Drakula's background
+        myBgAlt = "#44475A"; # Drakula's current line/selection background
+        myForeground = "#F8F8F2"; # Drakula's foreground
+        mySelected = "#50FA7B"; # Drakula's green (for selected items)
+        myActive = "#BD93F9"; # Drakula's purple (for active elements)
+        myTextSelected = "#282A36"; # Text color for selected items (should contrast with mySelected)
+        myTextColor = "#F8F8F2"; # General text color
+        myBorderColor = "#FF79C6"; # Drakula's pink (for borders)
+        myUrgent = "#FF5555"; # Drakula's red (for urgent elements)
       in {
         "*" = {
-          # bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-          # bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-          # foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-          # selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-          # active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-          # text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-          # text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
-          # border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-          # urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
+          # Use the new custom variables defined above
+          bg = mkLiteral "${myBg}";
+          bg-alt = mkLiteral "${myBgAlt}";
+          foreground = mkLiteral "${myForeground}";
+          selected = mkLiteral "${mySelected}";
+          active = mkLiteral "${myActive}";
+          text-selected = mkLiteral "${myTextSelected}";
+          text-color = mkLiteral "${myTextColor}";
+          border-color = mkLiteral "${myBorderColor}";
+          urgent = mkLiteral "${myUrgent}";
         };
         "window" = {
           width = mkLiteral "50%";
