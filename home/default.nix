@@ -1,5 +1,9 @@
-{ myLib, lib, ... }: {
-  imports = myLib.scanPaths ./;
+{
+  myLib,
+  lib,
+  ...
+}: {
+  imports = myLib.scanPaths ./.;
 
   options.custom.magic.hm = {
     enable = lib.mkEnableOption "Enable Custom Home-Manager Modules Globally";
