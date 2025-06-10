@@ -50,6 +50,7 @@
           overlays = import ./lib/overlay.nix;
           nixOsModules = import ./nixos;
           homeModules = import ./home;
+          myLib = import ./lib/default.nix {inherit (nixpkgs) lib;};
           inherit system;
         };
       };
@@ -77,7 +78,10 @@
 
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {inherit inputs system host userVars colorscheme;};
+      specialArgs = {
+        inherit inputs system host userVars colorscheme;
+        myLib = inputs.lib.myLib;
+      };
       modules = [
         ./hosts/${host}/configuration.nix
         inputs.disko.nixosModules.disko
@@ -92,7 +96,10 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users.jr = ./hosts/magic/home.nix;
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            myLib = inputs.lib.myLib;
+          };
         }
       ];
     };

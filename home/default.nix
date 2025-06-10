@@ -1,21 +1,5 @@
-{lib, ...}: {
-  imports = [
-    ./hypr
-    ./terms
-    ./shells
-    ./helix
-    # ./yazi.nix
-    ./git.nix
-    ./nh.nix
-    ./gtk.nix
-    ./packages.nix
-    ./fd.nix
-    ./nvf.nix
-    ./bat.nix
-    ./direnv.nix
-    ./editorconfig.nix
-    ./emoji.nix
-  ];
+{ myLib, lib, ... }: {
+  imports = myLib.scanPaths ./;
 
   options.custom.magic.hm = {
     enable = lib.mkEnableOption "Enable Custom Home-Manager Modules Globally";
