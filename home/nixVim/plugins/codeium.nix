@@ -18,7 +18,7 @@
     # Add codeium-nvim as an extra plugin
     # It will be found because it's in your `./lib/overlay.nix` and that overlay is applied.
     extraPlugins = with pkgs.vimPlugins; [
-      codeium-nvim
+      windsurf-nvim
     ];
 
     # This is crucial for Codeium to activate in Neovim
