@@ -6,8 +6,6 @@
   # nixpkgs.config.allowUnfree = true;
 
   programs.nixvim = {
-    enable = false; # Ensure NixVim is enabled
-
     # Enable and configure necessary base plugins for LSP/completion
     plugins = {
       # Codeium depends on plenary.nvim for some utilities
