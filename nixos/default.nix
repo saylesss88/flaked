@@ -1,31 +1,10 @@
 {
+  myLib,
   lib,
   config,
   ...
-}: let
-  cfg = config.custom.magic;
-in {
-  imports = [
-    ./networking.nix
-    ./greetd.nix
-    ./drivers
-    ./fonts.nix
-    ./boot.nix
-    ./nix.nix
-    ./cachix.nix
-    ./bluetooth.nix
-    ./programs.nix
-    ./thunar.nix
-    ./keyd.nix
-    ./lsp.nix
-    ./environmentVariables.nix
-    ./pipewire.nix
-    ./zram.nix
-    ./utils.nix
-    ./xdg.nix
-    ./services.nix
-    ./i18n.nix
-  ];
+}: {
+  imports = myLib.scanPaths ./.;
 
   options.custom.magic = {
     enable = lib.mkEnableOption "Enable magic modules globally";
@@ -53,25 +32,25 @@ in {
     custom.magic.enable = lib.mkDefault false;
 
     # Assertions to check if required variables are set when hydenix is enabled
-    assertions = lib.mkIf cfg.enable [
+    assertions = lib.mkIf config.custom.magic.enable [
       {
-        assertion = cfg.hostname != "";
+        assertion = config.custom.magic.hostname != "";
         message = "magic.hostname must be set";
       }
       {
-        assertion = cfg.timezone != "";
+        assertion = config.custom.magic.timezone != "";
         message = "magic.timezone must be set";
       }
       {
-        assertion = cfg.locale != "";
+        assertion = config.custom.magic.locale != "";
         message = "magic.locale must be set";
       }
     ];
 
     # Configuration for variables (only applied when hydenix is enabled)
-    time.timeZone = lib.mkIf cfg.enable cfg.timezone;
-    i18n.defaultLocale = lib.mkIf cfg.enable cfg.locale;
-    networking.hostName = lib.mkIf cfg.enable cfg.hostname;
+    time.timeZone = lib.mkIf config.custom.magic.enable config.custom.magic.timezone;
+    i18n.defaultLocale = lib.mkIf config.custom.magic.enable config.custom.magic.locale;
+    networking.hostName = lib.mkIf config.custom.magic.enable config.custom.magic.hostname;
 
     system.stateVersion = "25.05";
   };

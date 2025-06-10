@@ -111,6 +111,7 @@
           cleanup = "nh clean all";
           opts = "man home-configuration.nix";
           jctl = "journalctl -p 3 -xb";
+          nb = "nix-build";
 
           # Replacements
           cat = "${pkgs.bat}/bin/bat";
