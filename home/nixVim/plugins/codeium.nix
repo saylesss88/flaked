@@ -11,7 +11,7 @@
     # Enable and configure necessary base plugins for LSP/completion
     plugins = {
       # Codeium depends on plenary.nvim for some utilities
-      plenary.enable = true;
+      # plenary.enable = true;
       # If you use nvim-cmp for completion, enable it here
       # cmp.enable = true;
       # You might also need lspkind, luasnip, etc., depending on your full setup
