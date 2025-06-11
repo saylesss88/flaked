@@ -31,7 +31,7 @@
   config = {
     custom.magic.enable = lib.mkDefault false;
 
-    # Assertions to check if required variables are set when hydenix is enabled
+    # Assertions to check if required variables are set when magic is enabled
     assertions = lib.mkIf config.custom.magic.enable [
       {
         assertion = config.custom.magic.hostname != "";
@@ -47,7 +47,7 @@
       }
     ];
 
-    # Configuration for variables (only applied when hydenix is enabled)
+    # Configuration for variables (only applied when magic is enabled)
     time.timeZone = lib.mkIf config.custom.magic.enable config.custom.magic.timezone;
     i18n.defaultLocale = lib.mkIf config.custom.magic.enable config.custom.magic.locale;
     networking.hostName = lib.mkIf config.custom.magic.enable config.custom.magic.hostname;

@@ -70,7 +70,11 @@
     # Formatter configuration
     treefmtEval = treefmt-nix.lib.evalModule pkgs ./lib/treefmt.nix;
   in {
-    formatter.${system} = treefmtEval.config.build.wrapper;
+    ╭───┬────────────╮
+│ 0 │ x1b[?1049h │
+│ 1 │ >          │
+│ 2 │ /dev/tty   │
+╰───┴────────────╯formatter.${system} = treefmtEval.config.build.wrapper;
 
     # # Style check for CI
     checks.${system}.style = treefmtEval.config.build.check self;
