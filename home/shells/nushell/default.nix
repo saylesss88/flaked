@@ -95,7 +95,7 @@
           la = "ls -la";
           ll = "ls -l";
           n = "${pkgs.nitch}/bin/nitch";
-          vi = "nvim";
+          # vi = "nvim";
           zd = "zeditor";
           fz = "fzf --bind 'enter:become(hx {})'";
           powersave = "sudo cpupower frequency-set -g powersave";
