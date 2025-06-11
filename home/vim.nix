@@ -9,7 +9,7 @@
     };
     plugins = with pkgs.vimPlugins; [
       vim-prettier
-      vim-auto-pairs
+      auto-pairs
     ];
     extraConfig = ''
       set noeb vb t_vb=
