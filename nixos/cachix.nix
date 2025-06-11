@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.cachixModule;
+  cfg = config.custom.cachix;
 in {
   options = {
-    custom.cachixModule.enable = lib.mkEnableOption "Enable custom cachix configuration";
+    custom.cachix.enable = lib.mkEnableOption "Enable custom cachix configuration";
   };
 
   config = lib.mkIf cfg.enable {

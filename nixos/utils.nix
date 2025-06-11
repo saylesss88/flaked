@@ -4,9 +4,9 @@
   config,
   ...
 }: let
-  cfg = config.custom.utilsModule;
+  cfg = config.custom.utils;
 in {
-  options.custom.utilsModule = {
+  options.custom.utils = {
     enable = lib.mkEnableOption "Enable utils module";
   };
 

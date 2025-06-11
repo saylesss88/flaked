@@ -21,14 +21,14 @@
     magic.timezone = "America/New_York";
     magic.hostname = "magic";
     magic.locale = "en_US.UTF-8";
-    bootModule.enable = true;
+    boot.enable = true;
     users.enable = true;
-    nixModule.enable = true;
+    nix.enable = true;
     drivers.amdgpu.enable = true;
-    cachixModule.enable = true;
+    cachix.enable = true;
     zram.enable = true;
-    lspModule.enable = true;
-    utilsModule.enable = true;
+    lsp.enable = true;
+    utils.enable = true;
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.custom.bootModule;
+  cfg = config.custom.boot;
 in {
-  options.custom.bootModule = {
+  options.custom.boot = {
     enable = lib.mkEnableOption "Enable the Boot Module";
   };
 

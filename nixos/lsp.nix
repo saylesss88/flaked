@@ -4,9 +4,9 @@
   config,
   ...
 }: let
-  cfg = config.custom.lspModule;
+  cfg = config.custom.lsp;
 in {
-  options.custom.lspModule = {
+  options.custom.lsp = {
     enable = lib.mkEnableOption "Enable LSP Module";
   };
 
