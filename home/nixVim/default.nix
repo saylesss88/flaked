@@ -54,7 +54,7 @@ in {
     enable = true;
     defaultEditor = false;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-    viAlias = true;
+    # viAlias = true;
 
     colorschemes = {
       # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
