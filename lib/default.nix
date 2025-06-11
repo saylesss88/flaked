@@ -1,8 +1,4 @@
-╭───┬────────────╮
-│ 0 │ x1b[?1049h │
-│ 1 │ >          │
-│ 2 │ /dev/tty   │
-╰───┴────────────╯{lib, ...}: {
+{lib, ...}: {
   attrs = import ./attrs.nix {inherit lib;};
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
