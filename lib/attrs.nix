@@ -1,8 +1,4 @@
-╭───┬────────────╮
-│ 0 │ x1b[?1049h │
-│ 1 │ >          │
-│ 2 │ /dev/tty   │
-╰───┴────────────╯# https://github.com/NixOS/nixpkgs/blob/master/lib/attrsets.nix
+# https://github.com/NixOS/nixpkgs/blob/master/lib/attrsets.nix
 {lib, ...}: {
   # Generate an attribute set from a list.
   #

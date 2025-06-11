@@ -11,6 +11,10 @@
         indent_style = "space";
         indent_size = 4;
       };
+      "*.nix" = {
+        indent_style = "space";
+        indent_size = 2;
+      };
     };
   };
 }
