@@ -12,9 +12,9 @@
     hash = "sha256-yBcbvzWU2FI7vkeqL7+ZIoQboybaPIiH4fV9yMqdHlM=";
   };
 in {
-  options.custom.yaziModule.enable = lib.mkEnableOption "Enable Yazi file manager module";
+  options.custom.yazi.enable = lib.mkEnableOption "Enable Yazi file manager module";
 
-  config = lib.mkIf config.custom.yaziModule.enable {
+  config = lib.mkIf config.custom.yazi.enable {
     programs.yazi = {
       package = inputs.yazi.packages.${pkgs.system}.yazi;
       enable = true;

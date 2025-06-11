@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [inputs.nvf.homeManagerModules.default];
-  options.custom.nvfModule.enable = lib.mkEnableOption "Setup nvf";
-  config = lib.mkIf config.custom.nvfModule.enable {
+  options.custom.nvf.enable = lib.mkEnableOption "Setup nvf";
+  config = lib.mkIf config.custom.nvf.enable {
     programs.nvf = {
       enable = true;
       settings = {

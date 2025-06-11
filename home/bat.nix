@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.batModule;
+  cfg = config.custom.bat;
 in {
-  options.custom.batModule.enable = lib.mkOption {
+  options.custom.bat.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
     description = "Enable bat module";

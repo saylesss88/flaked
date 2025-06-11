@@ -4,9 +4,9 @@
   userVars,
   ...
 }: let
-  cfg = config.custom.nhModule;
+  cfg = config.custom.nh;
 in {
-  options.custom.nhModule = {
+  options.custom.nh = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

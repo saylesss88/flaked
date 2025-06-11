@@ -5,9 +5,9 @@
   userVars ? {},
   ...
 }: let
-  cfg = config.custom.gitModule;
+  cfg = config.custom.git;
 in {
-  options.custom.gitModule = {
+  options.custom.git = {
     # Changed from options.gitModule
     enable = lib.mkOption {
       type = lib.types.bool;

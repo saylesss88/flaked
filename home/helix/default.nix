@@ -5,10 +5,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.helixModule;
+  cfg = config.custom.helix;
 in {
   imports = [./languages.nix];
-  options.custom.helixModule.enable = lib.mkOption {
+  options.custom.helix.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
     description = "Enable Helix Module";

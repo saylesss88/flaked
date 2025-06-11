@@ -33,10 +33,10 @@
     magic.hm.enable = true;
     hyprland.enable = true;
     wlogout.enable = true;
-    helixModule.enable = true;
+    helix.enable = true;
     ghostty.enable = true;
     kitty.enable = true;
-    gitModule = {
+    git = {
       enable = true;
       # userName = "TSawyer87";
       # userEmail = "sawyerjr.25@gmail.com";
@@ -50,13 +50,13 @@
     # jjModule = {
     #   enable = true;
     # };
-    nhModule = {
+    nh = {
       enable = true;
       flake = "/home/jr/flake";
     };
-    nvfModule.enable = false;
-    batModule.enable = true;
-    yaziModule.enable = true;
+    nvf.enable = false;
+    bat.enable = true;
+    yazi.enable = true;
     # discord.enable = true;
   };
 
