@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  # userVars,
+  inputs,
   ...
 }: {
   options = {
@@ -31,12 +31,13 @@
         # shell = pkgs.zsh;
         shell = pkgs.nushell; # default shell
         ignoreShellProgramCheck = true;
-        packages = with pkgs; [
-          tealdeer
-          zoxide
-          mcfly
-          tokei
-          stow
+        packages = [
+          inputs.home-manager.packages.${pkgs.system}.default # install home-manager tool
+          pkgs.tealdeer
+          pkgs.zoxide
+          pkgs.mcfly
+          pkgs.tokei
+          pkgs.stow
         ];
       };
       # "newuser" = {
