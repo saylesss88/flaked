@@ -124,10 +124,10 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = cfg.packages;
+    programs.gh.enable = true;
 
     programs.git = {
       enable = true;
-      gh.enable = true;
       inherit (cfg) userName;
       inherit (cfg) userEmail;
       inherit (cfg) aliases;
