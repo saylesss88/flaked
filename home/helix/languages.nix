@@ -190,6 +190,7 @@
             "nil"
             "typos"
             "nixd"
+            "gpt"
             "codeium"
           ];
           file-types = ["nix"];
