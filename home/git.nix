@@ -124,7 +124,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = cfg.packages;
-    programs.gh.enable = true;
+    programs.gh = {
+      enable = true;
+      settings = {
+        editor = "hx";
+      };
+    };
 
     programs.git = {
       enable = true;
