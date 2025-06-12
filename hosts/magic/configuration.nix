@@ -78,8 +78,8 @@
           seat * xcursor_theme bibata_modern_ice 26
           set $mod Mod4 # This is where $mod is actually defined for Sway's config
 
-          # bindsym ${mod}+Shift+minus move scratchpad
-          # bindsym ${mod}+minus scratchpad show
+          bindsym Super+Shift+minus move scratchpad
+          # bindsym Super+minus scratchpad show
 
           exec waybar &
           exec nm-applet --indicator
