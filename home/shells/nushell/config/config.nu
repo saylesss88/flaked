@@ -13,6 +13,8 @@ $env.CARAPACE_BRIDGES = 'zsh'
 # $env.MANPAGER = "col -bx | bat -l man -p"
 $env.MANPAGECACHE = ($nu.default-config-dir | path join 'mancache.txt')
 $env.RUST_BACKTRACE = 1
+# # Need to clone the topiary repo to ~/.config/topiary for this to work
+# git clone https://github.com/blindFS/topiary-nushell ($env.XDG_CONFIG_HOME | path join topiary)
 $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 $env.TOPIARY_LANGUAGE_DIR = ($env.XDG_CONFIG_HOME | path join topiary languages)
 # $env.TOPIARY_LANGUAGE_DIR = (path join $env.XDG_CONFIG_HOME "topiary" "languages")
