@@ -15,7 +15,7 @@ $env.MANPAGECACHE = ($nu.default-config-dir | path join 'mancache.txt')
 $env.RUST_BACKTRACE = 1
 $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 $env.TOPIARY_LANGUAGE_DIR = ($env.XDG_CONFIG_HOME | path join topiary languages)
-$env.TOPIARY_LANGUAGE_DIR = (path join $env.XDG_CONFIG_HOME "topiary" "languages")
+# $env.TOPIARY_LANGUAGE_DIR = (path join $env.XDG_CONFIG_HOME "topiary" "languages")
 
 use /home/jr/flaked/home/shells/nushell/config/fzf.nu [
   carapace_by_fzf
@@ -160,13 +160,13 @@ $env.config.keybindings ++= [
     }
   }
   {
-    name: "unfreeze",
-    modifier: control,
-    keycode: "char_z",
+    name: "unfreeze"
+    modifier: control
+    keycode: "char_z"
     event: {
-      send: executehostcommand,
+      send: executehostcommand
       cmd: "job unfreeze"
-    },
+    }
     mode: emacs
   }
 ]
@@ -189,4 +189,3 @@ alias boc = brew outdated --cask --greedy
 alias ll = ls -al
 alias c = zi
 alias less = less -R
-
