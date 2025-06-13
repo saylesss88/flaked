@@ -46,7 +46,7 @@ in {
 
         editor = {
           shell = [
-            "sh"
+            "nu"
             "-c"
           ];
           color-modes = true;
