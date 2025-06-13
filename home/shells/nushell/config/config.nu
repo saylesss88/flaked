@@ -183,7 +183,7 @@ source /home/jr/flaked/home/shells/nushell/config/nix.nu
 source /home/jr/flaked/home/shells/nushell/config/atuin.nu
 
 # alias
-alias vim = nvim
+# alias vim = nvim
 alias boc = brew outdated --cask --greedy
 alias ll = ls -al
 alias c = zi

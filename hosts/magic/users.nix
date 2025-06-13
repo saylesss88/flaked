@@ -32,7 +32,7 @@
         shell = pkgs.nushell; # default shell
         ignoreShellProgramCheck = true;
         packages = [
-          inputs.home-manager.packages.${pkgs.system}.default # install home-manager tool
+          inputs.home-manager.packages.${pkgs.system}.default
           pkgs.tealdeer
           pkgs.zoxide
           pkgs.mcfly

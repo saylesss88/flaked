@@ -20,6 +20,7 @@
     pkgs.lm_sensors # sensors information lib
     pkgs.nitch
     pkgs.psmisc
+    pkgs.topiary
     # pkgs.nix-fast-build
     (import ../scripts/emopicker9000.nix {inherit pkgs;})
     (import ../scripts/task-waybar.nix {inherit pkgs;})
