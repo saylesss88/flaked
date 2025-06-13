@@ -132,6 +132,7 @@
       # PROMPT_INDICATOR_VI_NORMAL = "> ";
       # PROMPT_MULTILINE_INDICATOR = "::: ";
       # DIRENV_LOG_FORMAT = "";
+      XDG_CONFIG_HOME = "~/.config";
       EDITOR = "hx";
       VISUAL = "hx";
       MANPAGER = "nvim +Man!";
