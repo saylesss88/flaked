@@ -24,7 +24,7 @@ in {
         nufmt
         evcxr
         cheat # Display cheat sheets for commands
-        nssmsdns
+        nssmdns
         lsof
         yamllint
         statix

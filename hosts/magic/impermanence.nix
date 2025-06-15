@@ -36,7 +36,7 @@
       # "/var/log" # Persist logs for debugging (still commented out, good)
     ];
     files = [
-      "/swapfile" # Persist swapfile (impermanence manages this file)
+      # "/swapfile" # Persist swapfile (impermanence manages this file)
     ];
   };
 
