@@ -24,6 +24,8 @@ in {
         nufmt
         evcxr
         cheat # Display cheat sheets for commands
+        nssmsdns
+        lsof
         yamllint
         statix
         sqlite

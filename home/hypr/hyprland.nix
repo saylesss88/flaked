@@ -35,7 +35,7 @@ in {
       wtype
       rose-pine-cursor
       # nwg-look
-      # yad
+      yad
       # gtk-engine-murrine
     ];
     systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
