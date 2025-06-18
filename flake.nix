@@ -10,10 +10,10 @@
     nvf.url = "github:notashelf/nvf";
     yazi.url = "github:sxyazi/yazi";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lanzaboote = {
+    #   url = "github:nix-community/lanzaboote/v0.4.2";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     devour-flake.url = "github:srid/devour-flake";
     devour-flake.flake = false;
     sops-nix = {
