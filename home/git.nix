@@ -57,9 +57,12 @@ in {
         "*.drv"
         "*.out"
         "*.log"
-        "flake.lock"
-        "Cargo.lock"
+        ".direnv/"
+        ".cache/"
+        ".envrc"
         "/target"
+        "result"
+        "result-*"
         "/result"
         "/nix/store"
         "/nix/var/nix/profiles"
@@ -75,11 +78,11 @@ in {
     extraConfig = lib.mkOption {
       type = lib.types.attrs;
       default = {
-        commit.gpgsign = true;
-        gpg.format = "ssh";
-        user.signingkey = "~/.ssh/id_rsa.pub";
+        # commit.gpgsign = true;
+        # gpg.format = "ssh";
+        # user.signingkey = "/etc/ssh/ssh_host_ed25519_key.pub";
         core = {
-          editor = "nvim";
+          editor = "hx";
           excludesfile = "~/.config/git/ignore";
           pager = "${lib.getExe pkgs.diff-so-fancy}";
         };
