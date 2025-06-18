@@ -25,6 +25,7 @@ in {
         obsidian
         nufmt
         evcxr
+        sbctl
         git-filter-repo
         cheat # Display cheat sheets for commands
         nssmdns

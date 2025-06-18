@@ -35,7 +35,6 @@
       "/root"
     ];
     files = [
-      # "/nix/persist/swapfile" # Persist swapfile (impermanence manages this file)
     ];
   };
 }
