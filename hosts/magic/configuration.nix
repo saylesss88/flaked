@@ -13,6 +13,7 @@
     ./security.nix
     inputs.lib.nixOsModules
     inputs.sops-nix.nixosModules.sops
+    inputs.lanzaboote.nixosModules.lanzaboote
     ./impermanence.nix
     ./sops.nix
   ];

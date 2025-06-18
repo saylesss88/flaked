@@ -12,6 +12,10 @@ in {
 
   config = lib.mkIf cfg.enable {
     boot = {
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/var/lib/sbctl";
+      };
       # LinuxZen Kernel
       kernelPackages = pkgs.linuxPackages_zen;
       consoleLogLevel = 3;
@@ -36,7 +40,7 @@ in {
       loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot = {
-          enable = true;
+          enable = lib.mkForce false;
           configurationLimit = 20;
           consoleMode = lib.mkDefault "max";
         };
