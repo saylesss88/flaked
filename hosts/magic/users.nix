@@ -47,7 +47,7 @@
         home = "/var/lib/git"; # Standard location for non-interactive service user homes
         createHome = true; # Make sure the home directory is created
         homeMode = "0700"; # Restrict permissions for security
-        shell = pkgs.gitAndTools.git-shell; # Crucial for security: limits the user to Git commands over SSH
+        shell = "${pkgs.git}/bin/git-shell";
         # No extraGroups unless specifically needed for other service interactions
         # No packages unless this user needs specific tools
         # description = "Git service user for hosting repositories";
