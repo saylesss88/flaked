@@ -17,15 +17,16 @@
         isNormalUser = true;
         # description = userVars.gitUsername;
         description = "saylesss88";
-        hashedPasswordField = config.sops.secrets.password_hash.path;
+        hashedPasswordFile = config.sops.secrets.password_hash.path;
         extraGroups = [
           "networkmanager"
           "wheel"
           "libvirtd"
           "scanner"
           "lp"
-          "jr" # This group should typically be 'users' or 'jr' if you created it, 'root' is very unusual for a normal user
+          "jr"
           "sudo"
+          "git"
         ];
         # shell = pkgs.zsh;
         shell = pkgs.nushell; # default shell
@@ -50,7 +51,6 @@
         # No packages unless this user needs specific tools
         # description = "Git service user for hosting repositories";
       };
-
       # "newuser" = {
       #   homeMode = "755";
       #   isNormalUser = true;
@@ -61,8 +61,6 @@
       #   packages = with pkgs; [];
       # };
     };
-
-    # Correct placement for users.groups
-    users.groups.git = {};
+    groups.git = {};
   };
 }
