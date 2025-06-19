@@ -18,7 +18,6 @@
         # description = userVars.gitUsername;
         description = "saylesss88";
         hashedPasswordFile = config.sops.secrets.password_hash.path;
-        # initialHashedPassword = "$6$hLxz1nh01PVcUQ6e$4o6tYrRxbRQQFRN3NSUMkPuwdRpOhNdp1s07TAYr2shcbdQUkYurHyk8Xp8FvjVPwr60N4NSPDmwUr6Nd5FD9.";
         extraGroups = [
           "networkmanager"
           "wheel"
@@ -28,6 +27,7 @@
           "root"
           "jr"
           "sudo"
+          "git"
         ];
         # shell = pkgs.zsh;
         shell = pkgs.nushell; # default shell
@@ -41,6 +41,18 @@
           pkgs.stow
         ];
       };
+      users.users.git = {
+        isSystemUser = true; # Often, dedicated service users like 'git' are system users
+        group = "git"; # Assign to a dedicated 'git' group
+        home = "/var/lib/git"; # Standard location for non-interactive service user homes
+        createHome = true; # Make sure the home directory is created
+        homeMode = "0700"; # Restrict permissions for security
+        shell = pkgs.gitAndTools.git-shell; # Crucial for security: limits the user to Git commands over SSH
+        # No extraGroups unless specifically needed for other service interactions
+        # No packages unless this user needs specific tools
+        # description = "Git service user for hosting repositories";
+      };
+
       # "newuser" = {
       #   homeMode = "755";
       #   isNormalUser = true;
