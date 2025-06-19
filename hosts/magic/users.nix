@@ -41,7 +41,7 @@
           pkgs.stow
         ];
       };
-      users.users.git = {
+      git = {
         isSystemUser = true; # Often, dedicated service users like 'git' are system users
         group = "git"; # Assign to a dedicated 'git' group
         home = "/var/lib/git"; # Standard location for non-interactive service user homes
