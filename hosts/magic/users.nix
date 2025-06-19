@@ -61,6 +61,6 @@
       #   packages = with pkgs; [];
       # };
     };
-    groups.git = {};
+    users.groups.git = {};
   };
 }
