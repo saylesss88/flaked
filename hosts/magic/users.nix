@@ -51,8 +51,8 @@
         # No extraGroups unless specifically needed for other service interactions
         # No packages unless this user needs specific tools
         # description = "Git service user for hosting repositories";
+        groups.git = {};
       };
-      groups.git = {};
 
       # "newuser" = {
       #   homeMode = "755";
