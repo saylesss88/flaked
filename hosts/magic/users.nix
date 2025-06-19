@@ -52,6 +52,7 @@
         # No packages unless this user needs specific tools
         # description = "Git service user for hosting repositories";
       };
+      users.groups.git = {};
 
       # "newuser" = {
       #   homeMode = "755";
