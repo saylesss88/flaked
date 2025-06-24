@@ -19,7 +19,7 @@
   ];
 
   boot.initrd.luks.devices = {
-    crypt = {
+    cryptroot = {
       device = "/dev/disk/by-partlabel/luks";
       allowDiscards = true;
       preLVM = true;
