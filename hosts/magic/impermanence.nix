@@ -47,6 +47,7 @@
     directories = [
       "/etc/ssh"
       "/etc/nixos"
+      "/etc/NetworkManager/system-connections"
       "/var/spool"
       "/srv"
       "/var/lib/systemd"
