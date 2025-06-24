@@ -18,13 +18,13 @@
     ./sops.nix
   ];
 
-  # boot.initrd.luks.devices = {
-  #   cryptroot = {
-  #     device = "/dev/disk/by-partlabel/luks";
-  #     allowDiscards = true;
-  #     preLVM = true;
-  #   };
-  # };
+  boot.initrd.luks.devices = {
+    cryptroot = {
+      device = "/dev/disk/by-partlabel/luks";
+      allowDiscards = true;
+      preLVM = true;
+    };
+  };
 
   networking.hostName = "magic"; # Define your hostname.
 
