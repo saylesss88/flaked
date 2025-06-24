@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:nix-community/impermanence";
     disko.url = "github:nix-community/disko";
     hyprland.url = "github:hyprwm/Hyprland";
     helix.url = "github:helix-editor/helix";
@@ -102,7 +102,7 @@
         ./hosts/${host}/configuration.nix
         inputs.disko.nixosModules.disko
         inputs.home-manager.nixosModules.home-manager
-        # inputs.impermanence.nixosModules.impermanence
+        inputs.impermanence.nixosModules.impermanence
         (_: {
           # provides rev from `nixos-version --json`
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;

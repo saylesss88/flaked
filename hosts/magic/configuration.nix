@@ -18,6 +18,14 @@
     ./sops.nix
   ];
 
+  boot.initrd.luks.devices = {
+    crypt = {
+      device = "/dev/disk/by-partlabel/luks";
+      allowDiscards = true;
+      preLVM = true;
+    };
+  };
+
   networking.hostName = "magic"; # Define your hostname.
 
   # It seems like 'custom' might be a custom module that bundles other modules.
