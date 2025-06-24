@@ -1,52 +1,59 @@
 {lib, ...}: {
-  #  Reset root subvolume on boot
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir -p /btrfs_tmp
-    mount -o subvol=/ /dev/mapper/cryptroot /btrfs_tmp
+    mount -o subvolid=5 /dev/mapper/cryptroot /btrfs_tmp || {
+      echo "Failed to mount Btrfs root" >&2
+      exit 1
+    }
 
     # Check if root subvolume exists and move it to a backup
     if [[ -e /btrfs_tmp/root ]]; then
       mkdir -p /btrfs_tmp/old_roots
-      timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+      timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
       mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
     fi
 
-    # Recursively delete subvolumes under a given path (helper function)
+    # Recursively delete subvolumes
     delete_subvolume_recursively() {
+      local path="$1"
       IFS=$'\n'
-      for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+      for i in $(btrfs subvolume list -o "$path" | cut -f 9- -d ' '); do
         delete_subvolume_recursively "/btrfs_tmp/$i"
       done
-      btrfs subvolume delete "$1"
+      if ! btrfs subvolume delete "$path" 2>/tmp/subvol_delete_error.log; then
+        echo "Failed to delete subvolume $path, check /tmp/subvol_delete_error.log" >&2
+      fi
     }
 
-    # Clean up old backups (optional, keeps only last 30 days)
-    for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+    # Clean up old backups (keep last 30 days)
+    for i in $(btrfs subvolume list /btrfs_tmp | grep 'old_roots/' | awk '$NF ~ /old_roots\/[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{2}:[0-9]{2}:[0-9]{2}/ {print $NF}' | while read -r subvol; do
+      if [[ $(find "/btrfs_tmp/$subvol" -mtime +30) ]]; then
+        echo "/btrfs_tmp/$subvol"
+      fi
+    done); do
       delete_subvolume_recursively "$i"
     done
 
     # Create a fresh root subvolume
-    btrfs subvolume create /btrfs_tmp/root
+    btrfs subvolume create /btrfs_tmp/root || {
+      echo "Failed to create new root subvolume" >&2
+      exit 1
+    }
     umount /btrfs_tmp
   '';
 
-  boot.initrd.luks.devices = {
-    crypt = {
-      device = "/dev/disk/by-partlabel/luks";
-      allowDiscards = true;
-      preLVM = true;
-    };
-  };
-  # Use /persist as the persistence root, matching Disko's mountpoint
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      "/etc" # System configuration (Keep this here for persistence via bind-mount)
-      "/var/spool" # Mail queues, cron jobs
-      "/srv" # Web server data, etc.
-      "/root"
+      "/etc/ssh"
+      "/etc/nixos"
+      "/var/spool"
+      "/srv"
+      "/var/lib/systemd"
+      "/var/lib/bluetooth"
     ];
     files = [
+      "/etc/machine-id"
     ];
   };
 }
