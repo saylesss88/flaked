@@ -29,10 +29,11 @@
   environment.persistence."/persist" = {
     directories = [
       "/etc"
-      "/var/lib"
-      "/var/log"
-      "/home"
+      "/var/spool"
       "/root"
+      "/srv"
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/bluetooth"
     ];
     files = [
       "/etc/machine-id"
