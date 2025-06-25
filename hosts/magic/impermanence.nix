@@ -21,7 +21,7 @@
 
     # Restore from the blank snapshot
     echo "Restoring blank root subvolume..."
-    btrfs subvolume snapshot /mnt/persist-blank /mnt
+    btrfs subvolume snapshot /mnt/root-blank /mnt
 
     umount /mnt
   '';
