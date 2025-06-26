@@ -57,7 +57,8 @@ in {
         unfocused-split-opacity = 0.9;
         background-opacity = 0.6;
         background-blur-radius = 20;
-        command = "${pkgs.nushell}/bin/nu";
+        # command = "${pkgs.nushell}/bin/nu";
+        command = "${pkgs.zsh}/bin/zsh";
 
         window-theme = "dark";
 
