@@ -25,7 +25,7 @@
   home.persistence."/persist/home/jr" = {
     # Matches system-level /persist/home/jr
     directories = [
-      ".mozilla/firefox"
+      # ".mozilla/firefox"
       # ... other user-specific directories
     ];
     allowOther = false;
