@@ -2,7 +2,7 @@
 def nix-list-system []: nothing -> list<string> {
   ^nix-store -q --references /run/current-system/sw
   | lines
-  | filter { not ($in | str ends-with 'man') }
+  | where { not ($in | str ends-with 'man') }
   | each { $in | str replace -r '^[^-]*-' '' }
   | sort
 }
@@ -66,12 +66,12 @@ def ns [
 
 
 # `nufetch` `(nufetch).packages`
-def nufetch [] { 
+def nufetch [] {
 {
-"kernel": $nu.os-info.kernel_version, 
-"nu": $env.NU_VERSION, 
-"packages": (ls /etc/profiles/per-user | select name | prepend [[name];["/run/current-system/sw"]] | each { insert "number" (nix path-info --recursive ($in | get name) | lines | length) | insert "size" ( nix path-info -S ($in | get name) | parse -r '\s(.*)' | get capture0.0 | into filesize) | update "name" ($in | get name | parse -r '.*/(.*)' | get capture0.0 | if $in == "sw" {"system"} else {$in}) | rename "environment"}), 
-"uptime": (sys host).uptime 
+"kernel": $nu.os-info.kernel_version,
+"nu": $env.NU_VERSION,
+"packages": (ls /etc/profiles/per-user | select name | prepend [[name];["/run/current-system/sw"]] | each { insert "number" (nix path-info --recursive ($in | get name) | lines | length) | insert "size" ( nix path-info -S ($in | get name) | parse -r '\s(.*)' | get capture0.0 | into filesize) | update "name" ($in | get name | parse -r '.*/(.*)' | get capture0.0 | if $in == "sw" {"system"} else {$in}) | rename "environment"}),
+"uptime": (sys host).uptime
 }
 }
 
@@ -82,7 +82,7 @@ def nx [
     --help(-h)                          # Show this help message
 ] {
     let sub = $subcommand
-    
+
     # Show help if requested or no subcommand provided
     if $help or ($sub | is-empty) {
         print "\nNixOS management commands:"
@@ -95,7 +95,7 @@ def nx [
         print "  nx pull     - Pull latest github version\n"
         return
     }
- 
+
     match $sub {
         "config" => { nx-config }
         "deploy" => { nx-deploy }
@@ -107,7 +107,7 @@ def nx [
         _ => { print $"Unknown subcommand: ($sub)" }
     }
 }
- 
+
 # Completion function for nx subcommands
 def nx-completions [] {
     [
@@ -120,55 +120,55 @@ def nx-completions [] {
         "pull"     # Pull latest github version
     ]
 }
- 
+
 def nx-config [] {
     let original_dir = $env.PWD
     cd /home/jr/flake
     hx flake.nix
     cd $original_dir
 }
- 
+
 def nx-deploy [] {
     let current_hostname = (hostname | str trim)
     let original_dir = $env.PWD
     cd /home/jr/flake
     git diff -U0 **.nix
     print "\n-> NixOS Rebuilding..."
- 
+
     if (sudo nixos-rebuild switch --flake $"./#($current_hostname)" err> nixos-switch.log | complete).exit_code != 0 {
         grep --color=always error nixos-switch.log
         return 1
     }
- 
+
     let gen = (nixos-rebuild list-generations | lines | find current | first)
     git commit -am $gen
     cd $original_dir
     print "\n-> NixOS rebuild completed successfully."
 }
- 
+
 def nx-up [] {
     print "\n-> Updating nix..."
     let current_hostname = (hostname | str trim)
     sudo nix flake update --flake $"/home/jr/flake"
     sudo nixos-rebuild switch --flake $"/home/jr/flake#($current_hostname)"
 }
- 
+
 def nx-clean [] {
     print "\n-> Wiping old history ..."
     sudo nix-collect-garbage -d
 }
- 
+
 def nx-gc [] {
     print "\n-> Initiating Garbage Collection ..."
     sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d
 }
- 
+
 def nx-doctor [] {
     nx-up
     nx-gc
     nx-clean
 }
- 
+
 def nx-pull [] {
     let original_dir = $env.PWD
     cd /home/jr/flake
