@@ -27,7 +27,7 @@
 
   boot.initrd.postDeviceCommands = lib.mkBefore ''
     mkdir -p /key
-    sleep 1  # Allow USB detection
+    sleep 3  # Allow USB detection
     mount -n -t vfat -o ro $(findfs UUID=B7B4-863B) /key || echo "USB not found"
   '';
 
