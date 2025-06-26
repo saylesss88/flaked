@@ -26,6 +26,12 @@
     };
   };
 
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    fileSystems = ["/"];
+  };
+
   networking.hostName = "magic"; # Define your hostname.
 
   # It seems like 'custom' might be a custom module that bundles other modules.
