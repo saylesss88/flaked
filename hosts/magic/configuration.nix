@@ -4,7 +4,10 @@
   inputs,
   config, # Add config to the arguments for accessing config.networking.hostName etc.
   ...
-}: {
+}: let
+  PRIMARYUSBID = "B7B4-863B"; # From `blkid /dev/sda1`
+  BACKUPUSBID = "Ventoy"; # Optional secondary USB
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -18,33 +21,36 @@
     ./sops.nix
   ];
 
-  boot.initrd.luks.devices = {
-    cryptroot = {
-      device = "/dev/disk/by-partlabel/luks";
-      allowDiscards = true;
-      # fallbackToPassword = true;
-    };
-  };
-  # boot.initrd.kernelModules = [
-  #   "usb_storage"
-  #   "vfat" # Required for FAT-formatted USB
-  #   "nls_cp437" # Codepage support
-  #   "nls_iso8859_1" # Codepage support
-  # ];
-
-  # boot.initrd.postDeviceCommands = lib.mkBefore ''
-  #   mkdir -p /key
-  #   sleep 3  # Allow USB detection
-  #   mount -n -t vfat -o ro $(findfs UUID=B7B4-863B) /key || echo "USB not found"
-  # '';
-
-  # boot.initrd.luks.devices.cryptroot = {
-  #   device = "/dev/disk/by-partlabel/luks";
-  #   keyFile = "/key/usb-luks.key"; # Now accessible in initrd
-  #   fallbackToPassword = true;
-  #   allowDiscards = true;
-  #   # preLVM = true;  # Remove this unless using LVM
+  # boot.initrd.luks.devices = {
+  #   cryptroot = {
+  #     device = "/dev/disk/by-partlabel/luks";
+  #     allowDiscards = true;
+  #     # fallbackToPassword = true;
+  #   };
   # };
+  boot.initrd.kernelModules = [
+    "uas"
+    "usbcore"
+    "usb_storage"
+    "vfat"
+    "nls_cp437"
+    "nls_iso8859_1"
+  ];
+
+  boot.initrd.postDeviceCommands = lib.mkBefore ''
+    mkdir -p /key
+    sleep 2
+    mount -n -t vfat -o ro $(findfs UUID=${PRIMARYUSBID}) /key || \
+    mount -n -t vfat -o ro $(findfs UUID=${BACKUPUSBID}) /key || echo "No USB key found"
+  '';
+
+  boot.initrd.luks.devices.cryptroot = {
+    device = "/dev/disk/by-partlabel/luks";
+    keyFile = "/key/usb-luks.key";
+    fallbackToPassword = true;
+    allowDiscards = true;
+    preLVM = false; # Crucial!
+  };
 
   services.btrfs.autoScrub = {
     enable = true;
