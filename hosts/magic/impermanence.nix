@@ -18,9 +18,11 @@
       "/srv"
       "/etc/NetworkManager/system-connections"
       "/var/lib/bluetooth"
+      ".mozilla/firefox"
     ];
     files = [
       "/etc/machine-id"
+      ".mozilla/firefox/profiles.ini"
       # Add more files you want to persist
     ];
   };
