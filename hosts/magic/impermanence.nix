@@ -3,27 +3,11 @@
   lib,
   ...
 }: {
-  boot.initrd.postMountCommands = lib.mkAfter ''
-    mkdir -p /mnt
-    mount -o subvol=/ /dev/mapper/cryptroot /mnt
-
-    # Remove subvolumes under root (if any)
-    btrfs subvolume list -o /mnt |
-      cut -f9 -d' ' |
-      while read subvolume; do
-        echo "Deleting /$subvolume subvolume..."
-        btrfs subvolume delete "/mnt/$subvolume"
-      done
-
-    # Delete the root subvolume itself
-    echo "Deleting root subvolume..."
-    btrfs subvolume delete /mnt
-
-    # Restore from the blank snapshot
-    echo "Restoring blank root subvolume..."
-    btrfs subvolume snapshot /mnt/root-blank /mnt
-
-    umount /mnt
+  boot.initrd.postDeviceCommands = lib.mkAfter ''
+    mkdir /mnt
+    mount -t btrfs /dev/mapper/cryptroot /mnt # <--- Changed 'enc' to 'cryptroot'
+    btrfs subvolume delete /mnt/root
+    btrfs subvolume snapshot /mnt/root-blank /mnt/root
   '';
 
   environment.persistence."/persist" = {
