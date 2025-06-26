@@ -18,7 +18,7 @@
       "/srv"
       "/etc/NetworkManager/system-connections"
       "/var/lib/bluetooth"
-      ".mozilla/firefox"
+      "${config.home.sessionVariables.HOME}/.mozilla/firefox"
     ];
     files = [
       "/etc/machine-id"
