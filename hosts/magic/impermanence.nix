@@ -4,6 +4,7 @@
   ...
 }: {
   boot.initrd.postDeviceCommands = lib.mkAfter ''
+    echo "Rollback running" > /mnt/rollback.log
     mkdir /mnt
     mount -t btrfs /dev/mapper/cryptroot /mnt
     btrfs subvolume delete /mnt/root
