@@ -28,6 +28,7 @@
       ".mozilla/firefox"
       # ... other user-specific directories
     ];
+    allowOther = false;
   };
 
   # Custom home-manager modules
