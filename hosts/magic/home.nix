@@ -41,8 +41,10 @@
     kitty.enable = true;
     git = {
       enable = true;
-      userName = "saylesss88";
-      userEmail = "saylesss87@proton.me";
+      # userName = "saylesss88";
+      # userEmail = "saylesss87@proton.me";
+      userName = "TSawyer87";
+      userEmail = "sawyerjr.25@gmail.com";
       # aliases = "";
       # ignores = "";
       # packages = "";

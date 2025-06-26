@@ -45,10 +45,10 @@
     colorscheme = "tokyonight_night";
     userVars = {
       username = "jr";
-      gitEmail = "saylesss87@proton.me";
-      gitUsername = "saylesss88";
-      # gitEmail = "sawyerjr.25@gmail.com";
-      # gitUsername = "TSawyer87";
+      # gitEmail = "saylesss87@proton.me";
+      # gitUsername = "saylesss88";
+      gitEmail = "sawyerjr.25@gmail.com";
+      gitUsername = "TSawyer87";
       editor = "hx";
       term = "ghostty";
       keys = "us";
