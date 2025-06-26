@@ -5,7 +5,7 @@
 }: {
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /mnt
-    mount -t btrfs /dev/mapper/cryptroot /mnt # <--- Changed 'enc' to 'cryptroot'
+    mount -t btrfs /dev/mapper/cryptroot /mnt
     btrfs subvolume delete /mnt/root
     btrfs subvolume snapshot /mnt/root-blank /mnt/root
   '';
