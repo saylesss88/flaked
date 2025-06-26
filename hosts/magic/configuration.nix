@@ -18,26 +18,32 @@
     ./sops.nix
   ];
 
-  boot.initrd.kernelModules = [
-    "usb_storage"
-    "vfat" # Required for FAT-formatted USB
-    "nls_cp437" # Codepage support
-    "nls_iso8859_1" # Codepage support
-  ];
-
-  boot.initrd.postDeviceCommands = lib.mkBefore ''
-    mkdir -p /key
-    sleep 3  # Allow USB detection
-    mount -n -t vfat -o ro $(findfs UUID=B7B4-863B) /key || echo "USB not found"
-  '';
-
-  boot.initrd.luks.devices.cryptroot = {
-    device = "/dev/disk/by-partlabel/luks";
-    keyFile = "/key/usb-luks.key"; # Now accessible in initrd
-    fallbackToPassword = true;
-    allowDiscards = true;
-    # preLVM = true;  # Remove this unless using LVM
+  boot.initrd.luks.devices = {
+    cryptroot = {
+      device = "/dev/disk/by-partlabel/luks";
+      allowDiscards = true;
+    };
   };
+  # boot.initrd.kernelModules = [
+  #   "usb_storage"
+  #   "vfat" # Required for FAT-formatted USB
+  #   "nls_cp437" # Codepage support
+  #   "nls_iso8859_1" # Codepage support
+  # ];
+
+  # boot.initrd.postDeviceCommands = lib.mkBefore ''
+  #   mkdir -p /key
+  #   sleep 3  # Allow USB detection
+  #   mount -n -t vfat -o ro $(findfs UUID=B7B4-863B) /key || echo "USB not found"
+  # '';
+
+  # boot.initrd.luks.devices.cryptroot = {
+  #   device = "/dev/disk/by-partlabel/luks";
+  #   keyFile = "/key/usb-luks.key"; # Now accessible in initrd
+  #   fallbackToPassword = true;
+  #   allowDiscards = true;
+  #   # preLVM = true;  # Remove this unless using LVM
+  # };
 
   services.btrfs.autoScrub = {
     enable = true;
