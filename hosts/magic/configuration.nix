@@ -22,6 +22,7 @@
     cryptroot = {
       device = "/dev/disk/by-partlabel/luks";
       allowDiscards = true;
+      # fallbackToPassword = true;
     };
   };
   # boot.initrd.kernelModules = [
