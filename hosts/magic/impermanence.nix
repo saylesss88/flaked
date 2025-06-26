@@ -20,7 +20,7 @@
       "/var/lib/bluetooth"
     ];
     files = [
-      "/etc/machine-id"
+      # "/etc/machine-id"
       # Add more files you want to persist
     ];
   };
