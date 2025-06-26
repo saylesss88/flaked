@@ -19,17 +19,17 @@
     # ./ghostty.nix
     # ./hypr
     inputs.lib.homeModules
-    inputs.impermanence.homeManagerModules.impermanence
+    # inputs.impermanence.homeManagerModules.impermanence
   ];
 
-  home.persistence."/persist/home/jr" = {
-    # Matches system-level /persist/home/jr
-    directories = [
-      # ".mozilla/firefox"
-      # ... other user-specific directories
-    ];
-    allowOther = false;
-  };
+  # home.persistence."/persist/home/jr" = {
+  #   # Matches system-level /persist/home/jr
+  #   directories = [
+  #     # ".mozilla/firefox"
+  #     # ... other user-specific directories
+  #   ];
+  #   allowOther = false;
+  # };
 
   # Custom home-manager modules
   custom = {
