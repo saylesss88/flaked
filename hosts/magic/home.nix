@@ -13,9 +13,9 @@
   # programs.nix-index.enable = true;
   # Import Program Configurations
   imports = [
-    # inputs.dont-track-me.homeManagerModules.default
-    # inputs.nix-index-database.hmModules.nix-index
-    # {programs.nix-index-database.comma.enable = true;}
+    inputs.dont-track-me.homeManagerModules.default
+    inputs.nix-index-database.hmModules.nix-index
+    {programs.nix-index-database.comma.enable = true;}
     # ./ghostty.nix
     # ./hypr
     inputs.lib.homeModules
@@ -49,9 +49,11 @@
       # ignores = "";
       # packages = "";
     };
-    # jjModule = {
-    #   enable = true;
-    # };
+    jj = {
+      enable = true;
+      userName = "saylesss88";
+      userEmail = "saylesss87@proton.me";
+    };
     nh = {
       enable = true;
       flake = "/home/jr/flaked";
