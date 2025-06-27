@@ -3,6 +3,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     impermanence.url = "github:nix-community/impermanence";
     disko.url = "github:nix-community/disko";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    dont-track-me.url = "github:dtomvan/dont-track-me.nix/main";
     hyprland.url = "github:hyprwm/Hyprland";
     helix.url = "github:helix-editor/helix";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
